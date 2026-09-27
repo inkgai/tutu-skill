@@ -51,7 +51,7 @@ from _client import (  # noqa: E402
     validate_local_image,
 )
 
-RECOMMENDED_RATIOS = {"3:4", "1:1", "4:3", "2:3", "3:2"}
+RECOMMENDED_RATIOS = {"3:4", "1:1", "4:3", "2:3", "3:2", "16:9", "9:16"}
 
 
 def resolve_reference_urls(refs: list[str], api_key: str) -> list[str]:
@@ -89,7 +89,7 @@ def main() -> None:
     ap.add_argument("--prompt", required=True, help="图像描述（≤2000 字符，英文效果更佳）")
     ap.add_argument("--title", default="", help="标题（可选，≤100 字）")
     ap.add_argument("--ratio", default="1:1",
-                    help="画面比例：3:4 竖图 / 1:1 方图 / 4:3 横图 / 2:3 竖图 / 3:2 横图（默认 1:1）")
+                    help="画面比例：3:4 竖图 / 1:1 方图 / 4:3 横图 / 2:3 竖图 / 3:2 横图 / 16:9 宽屏 / 9:16 长屏（默认 1:1）")
     ap.add_argument("--seed", type=int, default=None, help="随机种子（可选，复现同画面用）")
     ap.add_argument("--ref", action="append", default=[], metavar="PATH_OR_URL",
                     help=f"参考图，可重复，最多 {MAX_REF_IMAGES} 张。本地文件路径（≤5MB，"
@@ -102,7 +102,7 @@ def main() -> None:
     if len(args.ref) > MAX_REF_IMAGES:
         sys.exit(f"❌ 参考图最多 {MAX_REF_IMAGES} 张，当前 {len(args.ref)} 张")
     if args.ratio not in RECOMMENDED_RATIOS:
-        print(f"⚠️  比例 {args.ratio} 不在推荐值内（3:4 / 1:1 / 4:3 / 2:3 / 3:2），"
+        print(f"⚠️  比例 {args.ratio} 不在推荐值内（3:4 / 1:1 / 4:3 / 2:3 / 3:2 / 16:9 / 9:16），"
               "可能被后端拒绝或回落", file=sys.stderr)
 
     api_key = resolve_api_key(args.api_key)

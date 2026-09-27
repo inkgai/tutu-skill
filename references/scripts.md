@@ -56,7 +56,7 @@
                 workplace / warm_illustration / rednote / infographic /
                 humor / narrative / literary / cute
 --style-id      风格 ID（指定后覆盖 --style）
---ratio         画面比例 1:1 / 3:4 / 4:3 / 2:3 / 3:2，默认 2:3 竖图（用 --workspace-id 时由空间决定）
+--ratio         画面比例 1:1 / 3:4 / 4:3 / 2:3 / 3:2（文章配图当前开放接口）；16:9 / 9:16 需后端开放接口升级，默认 2:3 竖图（用 --workspace-id 时由空间决定）
 --mode          pure_image（默认）/ text_blend（用 --workspace-id 时由空间决定）
 --character-id  角色模板 ID（可选，跨张保持角色一致）
 --ref-image     风格参考图 URL，可重复，最多 3 张
@@ -86,7 +86,7 @@
 ```
 --prompt    图像描述（必填，≤2000 字符，英文效果更佳）
 --title     标题（可选，≤100 字）
---ratio     画面比例：3:4 竖图 / 1:1 方图 / 4:3 横图 / 2:3 竖图 / 3:2 横图（默认 1:1）
+--ratio     画面比例：3:4 竖图 / 1:1 方图 / 4:3 横图 / 2:3 竖图 / 3:2 横图 / 16:9 宽屏 / 9:16 长屏（默认 1:1）
 --ref       参考图，可重复，最多 3 张：
               本地文件路径 → 自动先调 /upload-reference 上传到图图 OSS（≤5MB，
                             仅 jpg/jpeg/png/gif/webp，上传前本地先校验）

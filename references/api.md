@@ -145,7 +145,9 @@ LLM 自动生成各格分镜提示词，完成后**自动续接图像生成**，
 | `workspaceId` | long | △ | null | **空间创作**：传了之后 `illustrationStyle(Id)` / `aspectRatio` / `generationMode` / 角色一概从空间锁定值读取（覆盖请求里对应字段）；`articleContent` / `imageCount` / 参考图仍取请求值。用 `GET /workspaces` 查 `scene=article` 的空间 |
 | `illustrationStyleId` | long | △ | — | 三选一：风格 ID |
 | `illustrationStyle` | string | △ | — | 三选一：风格 key（见下表） |
-| `aspectRatio` | string | | `2:3` | **支持 `1:1` / `3:4` / `4:3` / `2:3` / `3:2`**（当前图图接口契约；平台会根据路由校验）；`2:3` 小红书/公众号竖图 |
+| `aspectRatio` | string | | `2:3` | **支持 `1:1` / `3:4` / `4:3` / `2:3` / `3:2`**（当前生产文章配图接口契约）；`2:3` 小红书/公众号竖图 |
+
+> 当前生产 `ArticleIllustrationRequest` 校验仍只接受这五档。`16:9` / `9:16` 已支持单张 `/image`、漫画和网页画报；文章配图要等后端 DTO 放开校验后再传。
 | `generationMode` | string | | `pure_image` | `pure_image` / `text_blend` |
 | `characterId` | long | | null | 角色模板 ID（跨张保持角色一致） |
 | `referenceImageUrls` | string[] | | [] | 风格参考图，最多 3 张 |
@@ -725,7 +727,7 @@ LLM 自动生成各格分镜提示词，完成后**自动续接图像生成**，
 
 | 日期 | 变更 |
 |---|---|
-| 2026-07-07 | `POST /image` 升级：新增 `referenceImageUrls`（≤3 张，仅图图 OSS URL）；`aspectRatio` 支持 `3:4` / `4:3` / `1:1` / `2:3` / `3:2`；计费 2 积分/次、失败自动退 |
+| 2026-07-07 | `POST /image` 升级：新增 `referenceImageUrls`（≤3 张，仅图图 OSS URL）；`aspectRatio` 支持 `3:4` / `4:3` / `1:1` / `2:3` / `3:2` / `16:9` / `9:16`；计费 2 积分/次、失败自动退 |
 | 2026-07-07 | 新增 `POST /upload-reference` 端点（multipart 字段 `image`，≤5MB 仅 image/*，返回 `{url, fileName, size}`） |
 | 2026-06-30 | 新增 `POST /diagram` 端点（结构化图解：流程图 / 架构图，返回 nodes + edges 中间表示，本地布局成可在「画板(Beta)」打开的 `.tutu.json`） |
 | 2026-05-17 | 新增 `GET /workspaces` 端点（"我的空间"查询，漫画创作首选） |

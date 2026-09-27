@@ -89,7 +89,7 @@ def main() -> None:
     if args.mode is not None and args.mode not in VALID_MODES:
         sys.exit(f"❌ 无效模式 '{args.mode}'，可选：{', '.join(sorted(VALID_MODES))}")
     if args.ratio is not None and args.ratio not in {"1:1", "3:4", "4:3", "2:3", "3:2"}:
-        sys.exit(f"❌ 无效比例 '{args.ratio}'，仅支持 1:1 / 3:4 / 4:3 / 2:3 / 3:2")
+        sys.exit(f"❌ 无效比例 '{args.ratio}'。当前生产文章配图 API 仅支持 1:1 / 3:4 / 4:3 / 2:3 / 3:2；16:9 / 9:16 需等待后端 DTO 放开校验")
     if len(args.ref_image) > 3:
         sys.exit(f"❌ 参考图最多 3 张，当前 {len(args.ref_image)} 张")
 

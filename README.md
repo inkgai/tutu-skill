@@ -16,10 +16,10 @@ API Key 从 [图图 API Key 页面](https://sso.inkgai.com/home/apikey) 获取�
 ## 常用示例
 
 ```bash
-# 单张图片；比例支持 3:4、4:3、1:1、2:3、3:2
+# 单张图片；比例支持 3:4、4:3、1:1、2:3、3:2、16:9、9:16
 python3 scripts/create_image.py --prompt "春日窗边读书的女孩，柔和自然光，留出标题区" --ratio 3:4
 
-# 文章配图
+# 文章配图（当前 OpenAPI 支持 1:1 / 2:3 / 3:4 / 4:3 / 3:2）
 python3 scripts/create_article_illustration.py --content "这里放 300 字以上文章正文" --count 4 --ratio 4:3
 
 # 漫画：先查空间，再生成分镜
