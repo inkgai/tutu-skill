@@ -19,7 +19,7 @@ API Key 从 [图图 API Key 页面](https://sso.inkgai.com/home/apikey) 获取�
 # 单张图片；比例支持 3:4、4:3、1:1、2:3、3:2、16:9、9:16
 python3 scripts/create_image.py --prompt "春日窗边读书的女孩，柔和自然光，留出标题区" --ratio 3:4
 
-# 文章配图（当前 OpenAPI 支持 1:1 / 2:3 / 3:4 / 4:3 / 3:2）
+# 文章配图；比例支持 1:1、2:3、3:4、4:3、3:2、16:9、9:16
 python3 scripts/create_article_illustration.py --content "这里放 300 字以上文章正文" --count 4 --ratio 4:3
 
 # 漫画：先查空间，再生成分镜
@@ -33,7 +33,10 @@ python3 scripts/diagram.py --prompt "画一张从选题到发布的内容生产�
 # 查看开放能力与网页登录能力边界（不联网）
 python3 scripts/capabilities.py
 
-# 灵感画报/画板模板/角色模板：生成网页登录 payload，不会把 API Key 发给网页登录接口
+# 输出可复制的创作指令模板
+python3 scripts/guide.py
+
+# 灵感画报/画板模板：生成网页登录 payload，不会把 API Key 发给网页登录接口
 python3 scripts/poster_plan_request.py --prompt "三页小红书健康科普海报，第一页提出问题，第二页解释原因，第三页给出行动建议" --page-count 3 --ratio 3:4
 python3 scripts/template_request.py --type character --name "温柔的科普讲师" --category-id 12 --content "短发、圆框眼镜、浅色针织衫，亲和、可靠，半身正面立绘"
 ```
@@ -65,3 +68,4 @@ python3 scripts/check_work.py --work-id WORK_ID --wait
 - [references/api.md](references/api.md)：OpenAPI 请求、响应、错误和计费
 - [references/scripts.md](references/scripts.md)：脚本参数
 - [references/comic-workflow.md](references/comic-workflow.md)：漫画分步精修
+- [references/creation-commands.md](references/creation-commands.md)：用户可复制的创作指令模板

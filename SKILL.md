@@ -52,7 +52,7 @@ description: >
 | 单张海报、插画、封面、角色立绘 | `create_image.py`；需要参考图时用 `--ref` |
 | 流程图、架构图、知识图、结构化图解 | `diagram.py`，生成 `.tutu.json` 后在图图画板打开编辑 |
 | 查询我的空间、风格、作品、任务 | 分别用 `list_workspaces.py`、`list_styles.py`、`list_works.py`、`check_work.py` |
-| 画板模板设计/海报规划/角色模板设计 | 用 `capabilities.py` 查看能力，再用 `poster_plan_request.py` 或 `template_request.py` 生成网页流程所需的结构化草稿；当前这些是登录态网页接口，API Key 不能直接调用。文章配图的开放 API 目前仍只接受 1:1 / 2:3 / 3:4 / 4:3 / 3:2；单张图片和漫画可使用 16:9 / 9:16 |
+| 画板模板设计/海报规划/角色模板设计 | 用 `capabilities.py` 查看能力，再用 `poster_plan_request.py` 或 `template_request.py` 生成网页流程所需的结构化草稿；当前这些是登录态网页接口，API Key 不能直接调用。文章配图、单张图片和漫画都支持 1:1 / 2:3 / 3:4 / 4:3 / 3:2 / 16:9 / 9:16 |
 
 ## 漫画工作流
 
@@ -110,6 +110,7 @@ python scripts/create_image.py --prompt "..." --ratio 3:4
 `SUPERTUTU_API_KEY`。所有脚本 stdout 输出 JSON，stderr 输出进度；API Key 不会被打印。
 
 用户问“怎么用/帮助/示例”时直接运行 `python scripts/help.py` 并转发结果。
+用户想要可复制的详细指令模板时运行 `python scripts/guide.py`，或按需阅读 [`references/creation-commands.md`](references/creation-commands.md)。
 需要完整参数、响应信封和计费说明时按需阅读：
 
 - [`references/api.md`](references/api.md)

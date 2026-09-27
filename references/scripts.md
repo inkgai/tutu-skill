@@ -15,6 +15,7 @@
 - [list_styles.py — 查询风格](#list_stylespy)
 - [update_shot.py — 精修单格分镜](#update_shotpy)
 - [render_work.py — 续接生图](#render_workpy)
+- [guide.py — 指令模板](#guidepy)
 
 ---
 
@@ -56,7 +57,7 @@
                 workplace / warm_illustration / rednote / infographic /
                 humor / narrative / literary / cute
 --style-id      风格 ID（指定后覆盖 --style）
---ratio         画面比例 1:1 / 3:4 / 4:3 / 2:3 / 3:2（文章配图当前开放接口）；16:9 / 9:16 需后端开放接口升级，默认 2:3 竖图（用 --workspace-id 时由空间决定）
+--ratio         画面比例 1:1 / 3:4 / 4:3 / 2:3 / 3:2 / 16:9 / 9:16，默认 2:3 竖图（用 --workspace-id 时由空间决定）
 --mode          pure_image（默认）/ text_blend（用 --workspace-id 时由空间决定）
 --character-id  角色模板 ID（可选，跨张保持角色一致）
 --ref-image     风格参考图 URL，可重复，最多 3 张
@@ -218,3 +219,11 @@ python3 scripts/template_request.py --type character --name "讲师" --category-
 ```
 
 只生成网页登录接口的请求草稿；角色模板需要 `--category-id`。
+
+## `guide.py` — 用户指令模板
+
+```bash
+python3 scripts/guide.py
+```
+
+打印 [`creation-commands.md`](creation-commands.md)，包含单图、漫画、配图、画板、海报策划、画板模板和角色模板的可复制格式。

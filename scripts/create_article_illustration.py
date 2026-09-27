@@ -68,7 +68,7 @@ def main() -> None:
     ap.add_argument("--style-id", type=int, default=None,
                     help="风格 ID（workspace_types.id；若指定则覆盖 --style）")
     ap.add_argument("--ratio", default=None,
-                    help="画面比例 1:1 / 3:4 / 4:3 / 2:3 / 3:2（默认 2:3 竖图；用 --workspace-id 时由空间决定）")
+                    help="画面比例 1:1 / 3:4 / 4:3 / 2:3 / 3:2 / 16:9 / 9:16（默认 2:3 竖图；用 --workspace-id 时由空间决定）")
     ap.add_argument("--mode", default=None,
                     help=f"生成模式（默认 pure_image；用 --workspace-id 时由空间决定），可选：{', '.join(sorted(VALID_MODES))}")
     ap.add_argument("--character-id", type=int, default=None,
@@ -88,8 +88,8 @@ def main() -> None:
         sys.exit(f"❌ 无效风格 '{args.style}'，可选：{', '.join(sorted(VALID_STYLES))}")
     if args.mode is not None and args.mode not in VALID_MODES:
         sys.exit(f"❌ 无效模式 '{args.mode}'，可选：{', '.join(sorted(VALID_MODES))}")
-    if args.ratio is not None and args.ratio not in {"1:1", "3:4", "4:3", "2:3", "3:2"}:
-        sys.exit(f"❌ 无效比例 '{args.ratio}'。当前生产文章配图 API 仅支持 1:1 / 3:4 / 4:3 / 2:3 / 3:2；16:9 / 9:16 需等待后端 DTO 放开校验")
+    if args.ratio is not None and args.ratio not in {"1:1", "3:4", "4:3", "2:3", "3:2", "16:9", "9:16"}:
+        sys.exit(f"❌ 无效比例 '{args.ratio}'。可选：1:1 / 3:4 / 4:3 / 2:3 / 3:2 / 16:9 / 9:16")
     if len(args.ref_image) > 3:
         sys.exit(f"❌ 参考图最多 3 张，当前 {len(args.ref_image)} 张")
 
@@ -108,7 +108,7 @@ def main() -> None:
         # 空间创作：风格 / 比例 / 生图模式由空间锁定，不下发（后端服务端解析覆盖）
         body["workspaceId"] = args.workspace_id
     else:
-        # 自定义模式：补默认并下发（注意 aspectRatio 仅 1:1/2:3/3:2，3:4 / 4:3 可直接使用）
+        # 自定义模式：补默认并下发（支持七档比例）
         body["aspectRatio"] = args.ratio or "2:3"
         body["generationMode"] = args.mode or "pure_image"
         if args.style_id is not None:

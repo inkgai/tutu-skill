@@ -16,7 +16,7 @@ from _client import get, resolve_api_key  # noqa: E402
 
 CAPABILITIES = [
     {"name": "comic", "label": "漫画", "transport": "openapi", "endpoint": "POST /comic", "ratios": ["1:1", "3:4", "4:3", "2:3", "3:2", "16:9", "9:16"]},
-    {"name": "article_illustration", "label": "文章配图", "transport": "openapi", "endpoint": "POST /article-illustration", "ratios": ["1:1", "2:3", "3:4", "4:3", "3:2"], "ratioNote": "生产 DTO 当前未开放 16:9 / 9:16"},
+    {"name": "article_illustration", "label": "文章配图", "transport": "openapi", "endpoint": "POST /article-illustration", "ratios": ["1:1", "2:3", "3:4", "4:3", "3:2", "16:9", "9:16"]},
     {"name": "image", "label": "单张图片", "transport": "openapi", "endpoint": "POST /image", "ratios": ["1:1", "3:4", "4:3", "2:3", "3:2", "16:9", "9:16"]},
     {"name": "diagram", "label": "结构化灵感画板", "transport": "openapi", "endpoint": "POST /diagram"},
     {"name": "poster_plan", "label": "灵感画报/多页海报策划", "transport": "web_session", "endpoint": "POST /v1/supertutu/inspiration-poster/plan", "web_url": "https://tutu.inkgai.com/inspiration"},
