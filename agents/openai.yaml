@@ -1,0 +1,7 @@
+interface:
+  display_name: "图图创作助手"
+  short_description: "优化需求并生成漫画、配图与画板图解"
+  brand_color: "#C42F6B"
+  default_prompt: "使用 $tutu-creator 把我的图片想法整理成清晰提示词，并在图图生成。"
+policy:
+  allow_implicit_invocation: true
